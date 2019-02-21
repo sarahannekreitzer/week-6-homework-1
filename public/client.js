@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.groupEnd();
     
     // Display the track name
-    var trackName = document.createElement(`<h3><a href="${data.external_urls.spotify}">${data.name}</a></h3>`); //very confused by the ${data.external}
+    var trackName = document.createElement
+    (`<h3><a href="${data.external_urls.spotify}">${data.name}</a></h3>`); //very confused by the ${data.external}
     trackName.appendTo('#search-track-container');
     
     // Display the artist name
