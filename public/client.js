@@ -11,10 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.groupEnd();
     
     // Display the track name
-    var trackName = document.createElement(
-      // '<h3><a href="' + data.external_urls.spotify + '" target="blank">' + data.name + '</a></h3>'
-      `h3><a href="${data.external_urls.spotify}">${data.name}></a></h3>`
-    );
+    var trackName = document.createElement(`<h3><a href="${data.external_urls.spotify}">${data.name}</a></h3>`);
     trackName.appendTo('#search-track-container');
     
     // Display the artist name
@@ -29,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById('search-track-container').append(h5);
     
     // Display the album art
-    var img = $('<img/>');
+    var img = document.createElement('<img/>');
     img.attr('src', data.album.images[0].url);
     img.appendTo('#search-track-container');
   });
