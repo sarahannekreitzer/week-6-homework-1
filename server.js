@@ -48,7 +48,10 @@ spotifyApi.clientCredentialsGrant()
 
 app.get('/search-track', function (request, response) {
   
-  let two
+  let twosongs = [ 
+    { songName: "Good Hands" },
+    { songName: "Walking Away" },
+    { songName: 
   
   // Search for a track!
   spotifyApi.searchTracks('track:revelator eyes', {limit: 1})
