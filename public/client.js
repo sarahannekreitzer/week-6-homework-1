@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       img.appendTo('#category-playlists-container');
     });
     })
-  });
-  httpRequest.open('GET', /audio-features);
+  };
+  httpRequest.open('GET', '/artists');
   httpRequest.send();
   
   
@@ -66,12 +66,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // Display the audio features
     keys.map(function(key, i) {
       if (data.hasOwnProperty(key)) {
-        var feature = $('<p><span class="big-number">' + data[key] + ' </span>'  + key + '</p>');
+        var feature = document.createElement('<p><span class="big-number">' + data[key] + ' </span>'  + key + '</p>');
         feature.appendTo('#audio-features-container');
       }
     });
-  });
-  httpRequest.open('GET', /audio-features);
+  };
+  httpRequest.open('GET', '/audio-features');
   httpRequest.send();
   
   
@@ -83,24 +83,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.groupEnd();
     
     // Display the artist's image
-    var img = $('<img class="circle-image" />');
+    var img = document.createElement('<img class="circle-image" />');
     img.attr('src', data.images[0].url);
     img.appendTo('#artist-container');
     
     // Display the artist name
-    var trackName = $('<h3>' + data.name + '</h3>');
+    var trackName = document.createElement('<h3>' + data.name + '</h3>');
     trackName.appendTo('#artist-container');
     
     // Display the artist's genres
     data.genres.map(function(genre, i) {
-      var genreItem = $('<p>' + genre + '</p>');
+      var genreItem = document.createElement('<p>' + genre + '</p>');
       genreItem.appendTo('#artist-container');
     });
-  });
-  httpRequest.open('GET', /artist);
+  };
+  httpRequest.open('GET', '/artist');
   httpRequest.send();
   
-  $.get('/artist-top-tracks', function(data) {
+    var httpRequest = new XMLHttpRequest()
+    httpRequest.onreadystatechange = function (data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /artist-top-tracks', 'color: #F037A5; font-size: large');
     console.log(data);
@@ -108,9 +109,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     // Display the audio features
     data.map(function(track, i) {
-      var trackName = $('<li>' + track.name + '</li>');
+      var trackName = document.createElement('<li>' + track.name + '</li>');
       trackName.appendTo('#top-tracks-container');
     });
-  });
-
+  };
+  httpRequest.open('GET', '/artist-top-tracks');
+  httpRequest.send();
 });
+  
