@@ -1,7 +1,7 @@
 // client-side js
 // run by the browser each time your view template is loaded
 
-// replaced jQuery with an event listener
+// replaced jQuery with an event listener ready function
 document.addEventListener("DOMContentLoaded", function(event) {
     
   fetch('/search-track').then(resp => resp.json()).then((data) => {
