@@ -56,6 +56,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   httpRequest.open('GET', '/artists');
   httpRequest.send();
   
+
+   // Display the covers of the playlists
   
     var httpRequest = new XMLHttpRequest()
     httpRequest.onreadystatechange = function (data) {
