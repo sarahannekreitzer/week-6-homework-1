@@ -10,8 +10,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.log(data);
     console.groupEnd();
     
+    // create HTML variable to store in 
     var html = '';
-    var trackContain = document.getElementById('search-track');
+    var trackContainer = document.getElementById('search-track-container');
     
     // Display the track name
     var trackName = document.createElement
