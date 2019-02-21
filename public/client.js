@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.groupEnd();
     
     // Display the track name
-    var trackName = document.createElement(`<h3><a href="${data.external_urls.spotify}">${data.name}</a></h3>`);
+    var trackName = document.createElement(`<h3><a href="${data.external_urls.spotify}">${data.name}</a></h3>`); //very confused by the ${data.external}
     trackName.appendTo('#search-track-container');
     
     // Display the artist name
@@ -31,7 +31,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     img.appendTo('#search-track-container');
   });
   
-  $.get('/category-playlists', function(data) {
+    var httpRequest = new XMLHttpRequest()
+    httpRequest.onreadystatechange = function (data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /category-playlists', 'color: #F037A5; font-size: large');
     console.log(data);
@@ -40,16 +41,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // Display the covers of the playlists
     data
       .forEach((c) => {
-      $('#category-playlists-container').append(`<br><h1>${c.name}</h1><br>`)
+      document.getElementById('category-playlists-container').appendTo(`<br><h1>${c.name}</h1><br>`)
       c.data.playlists.items.map(function(playlist, i) {
-      var img = $('<img class="cover-image"/>');
+      var img = document.createElement('<img class="cover-image"/>');
       img.attr('src', playlist.images[0].url);
       img.appendTo('#category-playlists-container');
     });
     })
   });
+  httpRequest.open('GET', /audio-features);
+  httpRequest.send();
   
-  $.get('/audio-features', function(data) {
+  
+    var httpRequest = new XMLHttpRequest()
+    httpRequest.onreadystatechange = function (data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /audio-features', 'color: #F037A5; font-size: large');
     console.log(data);
@@ -66,8 +71,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     });
   });
+  httpRequest.open('GET', /audio-features);
+  httpRequest.send();
   
-  $.get('/artist', function(data) {
+  
+    var httpRequest = new XMLHttpRequest()
+    httpRequest.onreadystatechange = function (data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
     console.group('%cResponse from /artist', 'color: #F037A5; font-size: large');
     console.log(data);
@@ -88,6 +97,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       genreItem.appendTo('#artist-container');
     });
   });
+  httpRequest.open('GET', /artist);
+  httpRequest.send();
   
   $.get('/artist-top-tracks', function(data) {
     // "Data" is the object we get from the API. See server.js for the function that returns it.
