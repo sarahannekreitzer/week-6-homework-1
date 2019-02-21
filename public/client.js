@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.groupEnd();
     
     var html = '';
-    var trackContain = document.getElementById('search-track-container');
+    var trackContain = document.getElementById('search-track');
     
     // Display the track name
     var trackName = document.createElement
