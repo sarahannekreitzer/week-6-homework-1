@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.log(data);
     console.groupEnd();
     
+    var html = '';
+    var trackContain = document.getElementById('search-track-container');
+    
     // Display the track name
     var trackName = document.createElement
     (`<h3><a href="${data.external_urls.spotify}">${data.name}</a></h3>`); //very confused by the ${data.external}
